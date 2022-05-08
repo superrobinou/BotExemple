@@ -61,13 +61,13 @@ var PingCommand = /** @class */ (function () {
         });
     };
     __decorate([
-        (0, discordx_1.Slash)('ping'),
+        discordx_1.Slash('ping'),
         __metadata("design:type", Function),
         __metadata("design:paramtypes", [discord_js_1.CommandInteraction]),
         __metadata("design:returntype", Promise)
     ], PingCommand.prototype, "ping", null);
     PingCommand = __decorate([
-        (0, discordx_1.Discord)()
+        discordx_1.Discord()
     ], PingCommand);
     return PingCommand;
 }());

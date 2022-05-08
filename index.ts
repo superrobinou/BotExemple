@@ -27,6 +27,6 @@ client.on("messageCreate", (message: Message) => {
 });
 async function start(){
     await importx(`${__dirname}/commands/**.js`);
-    client.login(process.env.BOT_TOKEN.toString());
+    client.login('');
 }
 start();

@@ -4,3 +4,4 @@ pour lancer en mode 'dev':
 npm run dev
 pour lancer en mode 'normal':
 npm run start
+remplacer '' par votre token ou votre variable d'environnement.
