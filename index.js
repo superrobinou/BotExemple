@@ -78,10 +78,10 @@ function start() {
     return __awaiter(this, void 0, void 0, function () {
         return __generator(this, function (_a) {
             switch (_a.label) {
-                case 0: return [4 /*yield*/, importer_1.importx(__dirname + "/commands/**.js")];
+                case 0: return [4 /*yield*/, (0, importer_1.importx)("".concat(__dirname, "/commands/**.js"))];
                 case 1:
                     _a.sent();
-                    client.login('');
+                    client.login('OTcyODQ3MzgwOTcyMDY4OTA0.GN0frs.qglMttm3_j_Ei4TcOh75a-QtR89SQdCf6lwDq4');
                     return [2 /*return*/];
             }
         });

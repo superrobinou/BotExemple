@@ -27,6 +27,6 @@ client.on("messageCreate", (message: Message) => {
 });
 async function start(){
     await importx(`${__dirname}/commands/**.js`);
-    client.login('');
+    client.login('OTcyODQ3MzgwOTcyMDY4OTA0.GN0frs.qglMttm3_j_Ei4TcOh75a-QtR89SQdCf6lwDq4');
 }
 start();

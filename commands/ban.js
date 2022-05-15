@@ -8,6 +8,9 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
+var __param = (this && this.__param) || function (paramIndex, decorator) {
+    return function (target, key) { decorator(target, key, paramIndex); }
+};
 var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, generator) {
     function adopt(value) { return value instanceof P ? value : new P(function (resolve) { resolve(value); }); }
     return new (P || (P = Promise))(function (resolve, reject) {
@@ -45,30 +48,50 @@ var __generator = (this && this.__generator) || function (thisArg, body) {
     }
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.PingCommand = void 0;
+exports.BanCommand = void 0;
 var discord_js_1 = require("discord.js");
 var discordx_1 = require("discordx");
-require("reflect-metadata");
-var PingCommand = /** @class */ (function () {
-    function PingCommand() {
+var BanCommand = /** @class */ (function () {
+    function BanCommand() {
     }
-    PingCommand.prototype.ping = function (pingCommand) {
+    BanCommand.prototype.ban = function (user, banCommand) {
+        var _a;
         return __awaiter(this, void 0, void 0, function () {
-            return __generator(this, function (_a) {
-                pingCommand.reply({ content: 'pong!' });
-                return [2 /*return*/];
+            var dm;
+            return __generator(this, function (_b) {
+                switch (_b.label) {
+                    case 0:
+                        if (!user.bannable) return [3 /*break*/, 4];
+                        if (!((_a = banCommand.memberPermissions) === null || _a === void 0 ? void 0 : _a.has(discord_js_1.Permissions.FLAGS.BAN_MEMBERS, true))) return [3 /*break*/, 2];
+                        return [4 /*yield*/, user.createDM()];
+                    case 1:
+                        dm = _b.sent();
+                        dm.send(user.displayName + ", vous a étés banni");
+                        user.ban();
+                        banCommand.reply('utilisateur <@' + user.id + '>');
+                        return [3 /*break*/, 3];
+                    case 2:
+                        banCommand.reply({ content: "vous n'avez pas les permissions de bannir cet utilisateur" });
+                        _b.label = 3;
+                    case 3: return [3 /*break*/, 5];
+                    case 4:
+                        banCommand.reply({ content: "je ne peux pas bannir cet utilisateur!" });
+                        _b.label = 5;
+                    case 5: return [2 /*return*/];
+                }
             });
         });
     };
     __decorate([
-        (0, discordx_1.Slash)('ping'),
+        (0, discordx_1.Slash)('ban'),
+        __param(0, (0, discordx_1.SlashOption)("user", { description: "utilisateur", type: "USER" })),
         __metadata("design:type", Function),
-        __metadata("design:paramtypes", [discord_js_1.CommandInteraction]),
+        __metadata("design:paramtypes", [discord_js_1.GuildMember, discord_js_1.CommandInteraction]),
         __metadata("design:returntype", Promise)
-    ], PingCommand.prototype, "ping", null);
-    PingCommand = __decorate([
+    ], BanCommand.prototype, "ban", null);
+    BanCommand = __decorate([
         (0, discordx_1.Discord)()
-    ], PingCommand);
-    return PingCommand;
+    ], BanCommand);
+    return BanCommand;
 }());
-exports.PingCommand = PingCommand;
+exports.BanCommand = BanCommand;
